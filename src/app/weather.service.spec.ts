@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherService {
-  private apiKey = '01d38796686e59670f43f11bd0f4771c'; // Tu clave de API de OpenWeatherMap
+  private apiKey = 'c51d3b232244fc396a6af559bbb2a799'; // Tu clave de API de OpenWeatherMap
 
   constructor(private http: HttpClient) { }
 
