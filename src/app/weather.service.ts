@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators'; // Importa los operadores tap y catchError
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,17 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeatherByCoordinates(latitude: number, longitude: number): Observable<any> {
-    const url = 'https://api.openweathermap.org/data/2.5/weather';
-    const params = new HttpParams()
-      .set('lat', latitude.toString())
-      .set('lon', longitude.toString())
-      .set('appid', this.apiKey);
+  getWeatherByCity(city: string): Observable<any> {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`;
+    return this.http.get(apiUrl).pipe(
+      tap(data => console.log('Weather data:', data)), // Utiliza el operador tap para imprimir los datos del clima en la consola
+      catchError(this.handleError) // Maneja cualquier error utilizando el método handleError
+    );
+  }
 
-    return this.http.get(url, { params });
+  // Método para manejar errores
+  private handleError(error: any) {
+    console.error('Error fetching weather data:', error);
+    return throwError(error); // Lanza el error para que el componente lo maneje
   }
 }
