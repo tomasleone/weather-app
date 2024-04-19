@@ -45,6 +45,11 @@ export class AppComponent implements OnInit {
     // Implementar lógica para buscar el clima de la ciudad ingresada aquí
     this.getWeather(this.searchQuery); // Llamar al método getWeather con la ciudad ingresada
   }
+
+  convertKelvinToCelsius(kelvin: number): number {
+    return kelvin - 273.15;
+  }
+  
   
   
 }

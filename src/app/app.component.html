@@ -12,8 +12,10 @@
 
   <!-- Temperatura -->
   <div class="text-center mb-4">
-    <p class="text-4xl font-semibold">{{ weatherData?.main?.temp }}°C</p> <!-- Accede a la temperatura desde main.temp -->
+    <p class="text-4xl font-semibold">{{ convertKelvinToCelsius(weatherData?.main?.temp) | number: '1.0-0' }}°C</p>
   </div>
+  
+  
 
   <!-- Nombre de la ciudad -->
   <h1 class="text-xl font-semibold text-center mb-4">{{ weatherData?.name }}</h1> <!-- Accede al nombre de la ciudad desde name -->
@@ -27,5 +29,3 @@
     </div>
   </div>
 </div>
-
-
