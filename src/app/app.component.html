@@ -1,5 +1,8 @@
-<div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-200">
-  <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap">
+
+
+<div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-200 to-blue-300">
+  <div class="max-w-md mx-auto bg-white shadow-md rounded-md p-8">
     <!-- Barra de búsqueda -->
     <div class="flex items-center mb-6">
       <input type="text" placeholder="Buscar ciudad..." class="flex-1 border-gray-300 border-2 p-2 mr-4 rounded-md focus:outline-none focus:border-blue-500" [(ngModel)]="searchQuery" (input)="onSearchChange()">
@@ -17,7 +20,8 @@
     </div>
 
     <!-- Nombre de la ciudad -->
-    <h1 class="text-xl font-semibold text-center mb-4">{{ weatherData?.name }}</h1>
+    <h1 class="text-xl font-semibold text-center mb-4 text-blue-800 text-opacity-75">{{ weatherData?.name }}</h1>
+
 
     <!-- Información adicional del clima -->
     <div class="flex justify-between">
@@ -30,9 +34,10 @@
   </div>
 </div>
 
-<footer class="text-center text-gray-500 text-sm mt-2 pb-5">
+<footer class="text-center text-gray-500 text-sm mt-2 pb-2">
   <p>Proyecto realizado por Leone Tomás &copy; {{ getCurrentYear() }}</p>
 </footer>
+
 
 
 
