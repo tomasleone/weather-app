@@ -15,6 +15,16 @@ export class AppComponent implements OnInit {
   weatherData: any;
   searchQuery: string = ''; // Declaración de la propiedad searchQuery
 
+    // Definir el objeto weatherIcons para mapear los códigos de icono a las rutas de las imágenes
+    weatherIcons = {
+      '01d': 'assets/clear-day.png',
+      '01n': 'assets/clear-night.png',
+      '02d': 'assets/partly-cloudy-day.png',
+      '02n': 'assets/partly-cloudy-night.png',
+      // Agregar más códigos e imágenes según sea necesario
+    };
+
+
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
@@ -50,6 +60,15 @@ export class AppComponent implements OnInit {
     return kelvin - 273.15;
   }
   
+  convertTemperatureIfNeeded(temperature: number): number {
+    if (temperature > 100) {
+      // Suponemos que la temperatura está en Kelvin si es mayor a 100
+      return +((temperature - 273.15).toFixed(2)); // Redondear a 2 decimales
+    } else {
+      // La temperatura ya está en grados Celsius
+      return +temperature.toFixed(2); // Redondear a 2 decimales
+    }
+  }
   
   
 }

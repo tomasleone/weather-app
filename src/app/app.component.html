@@ -23,9 +23,10 @@
   <!-- Información adicional del clima -->
   <div class="flex justify-between">
     <div>
-      <p>Viento: {{ weatherData?.wind?.speed }} km/h</p> <!-- Accede a la velocidad del viento desde wind.speed -->
-      <p>Humedad: {{ weatherData?.main?.humidity }}%</p> <!-- Accede a la humedad desde main.humidity -->
-      <p>Precipitación: {{ weatherData?.main?.pressure }}%</p> <!-- Accede a la presión atmosférica desde main.pressure -->
+      <p>Sensación térmica: {{ convertTemperatureIfNeeded(weatherData?.main?.feels_like) }}°C</p>
+
+    <p>Humedad: {{ weatherData?.main?.humidity }}%</p>
+    <p>Viento: {{ weatherData?.wind?.speed }} km/h</p>
     </div>
   </div>
 </div>
