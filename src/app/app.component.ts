@@ -16,13 +16,27 @@ export class AppComponent implements OnInit {
   searchQuery: string = ''; // Declaración de la propiedad searchQuery
 
     // Definir el objeto weatherIcons para mapear los códigos de icono a las rutas de las imágenes
-    weatherIcons = {
-      '01d': 'assets/clear-day.png',
-      '01n': 'assets/clear-night.png',
-      '02d': 'assets/partly-cloudy-day.png',
-      '02n': 'assets/partly-cloudy-night.png',
-      // Agregar más códigos e imágenes según sea necesario
+    weatherIcons: { [key: string]: string } = {
+      '01d': 'assets/img/clear-day.png',             // Cielo despejado durante el día
+      '01n': 'assets/img/clear-night.png',           // Cielo despejado durante la noche
+      '02d': 'assets/img/partly-cloudy-day.png',     // Cielo parcialmente nublado durante el día
+      '02n': 'assets/img/partly-cloudy-night.png',   // Cielo parcialmente nublado durante la noche
+      '03d': 'assets/img/partly-cloudy-day.png',            // Cielo nublado durante el día
+      '03n': 'assets/img/partly-cloudy-night.png',          // Cielo nublado durante la noche
+      '04d': 'assets/img/very-cloudy-day.png',       // Cielo muy nublado durante el día
+      '04n': 'assets/img/very-cloudy-night.png',     // Cielo muy nublado durante la noche
+      '09d': 'assets/img/day-rain.png',               // Lluvia ligera durante el día
+      '09n': 'assets/img/night-rain.png',             // Lluvia ligera durante la noche
+      '10d': 'assets/img/day-rain.png',              // Lluvia moderada durante el día
+      '10n': 'assets/img/night-rain.png',           // Lluvia moderada durante la noche
+      '11d': 'assets/img/day-rain.png',             // Tormentas durante el día
+      '11n': 'assets/img/storm-night.png',           // Tormentas durante la noche
+      '13d': 'assets/img/snow-day.png',              // Nieve durante el día
+      '13n': 'assets/img/snow-night.png',            // Nieve durante la noche
+      '50d': 'assets/img/mist-day.png',              // Neblina durante el día
+      '50n': 'assets/img/mist-night.png',            // Neblina durante la noche
     };
+    
 
 
   constructor(private weatherService: WeatherService) { }
@@ -68,6 +82,10 @@ export class AppComponent implements OnInit {
       // La temperatura ya está en grados Celsius
       return +temperature.toFixed(2); // Redondear a 2 decimales
     }
+  }
+  
+  getCurrentYear(): number {
+    return new Date().getFullYear();
   }
   
   

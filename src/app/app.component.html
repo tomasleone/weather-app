@@ -1,32 +1,40 @@
-<div class="max-w-md mx-auto bg-white shadow-md rounded-md p-8">
-  <!-- Barra de búsqueda -->
-  <div class="flex items-center mb-6">
-    <input type="text" placeholder="Buscar ciudad..." class="flex-1 border-gray-300 border-2 p-2 mr-4 rounded-md focus:outline-none focus:border-blue-500" [(ngModel)]="searchQuery" (input)="onSearchChange()">
-    <button class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none" (click)="search()">Buscar</button>
-  </div>
+<div class="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-100 to-blue-200">
+  <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-8">
+    <!-- Barra de búsqueda -->
+    <div class="flex items-center mb-6">
+      <input type="text" placeholder="Buscar ciudad..." class="flex-1 border-gray-300 border-2 p-2 mr-4 rounded-md focus:outline-none focus:border-blue-500" [(ngModel)]="searchQuery" (input)="onSearchChange()">
+      <button class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none" (click)="search()">Buscar</button>
+    </div>
 
-  <!-- Imagen/icono del clima -->
-  <div class="text-center mb-6">
-    <img src="assets/sun.png" alt="Clima" class="w-32 h-32 mx-auto">
-  </div>
+    <!-- Imagen/icono del clima -->
+    <div class="text-center mb-6">
+      <img [src]="weatherIcons[weatherData?.weather[0]?.icon || 'default']" alt="Clima" class="w-32 h-32 mx-auto">
+    </div>
 
-  <!-- Temperatura -->
-  <div class="text-center mb-4">
-    <p class="text-4xl font-semibold">{{ convertKelvinToCelsius(weatherData?.main?.temp) | number: '1.0-0' }}°C</p>
-  </div>
-  
-  
+    <!-- Temperatura -->
+    <div class="text-center mb-4">
+      <p class="text-4xl font-semibold">{{ convertKelvinToCelsius(weatherData?.main?.temp) | number: '1.0-0' }}°C</p>
+    </div>
 
-  <!-- Nombre de la ciudad -->
-  <h1 class="text-xl font-semibold text-center mb-4">{{ weatherData?.name }}</h1> <!-- Accede al nombre de la ciudad desde name -->
+    <!-- Nombre de la ciudad -->
+    <h1 class="text-xl font-semibold text-center mb-4">{{ weatherData?.name }}</h1>
 
-  <!-- Información adicional del clima -->
-  <div class="flex justify-between">
-    <div>
-      <p>Sensación térmica: {{ convertTemperatureIfNeeded(weatherData?.main?.feels_like) }}°C</p>
-
-    <p>Humedad: {{ weatherData?.main?.humidity }}%</p>
-    <p>Viento: {{ weatherData?.wind?.speed }} km/h</p>
+    <!-- Información adicional del clima -->
+    <div class="flex justify-between">
+      <div>
+        <p class="text-base">Sensación térmica: {{ convertTemperatureIfNeeded(weatherData?.main?.feels_like) }}°C</p>
+        <p class="text-base">Humedad: {{ weatherData?.main?.humidity }}%</p>
+        <p class="text-base">Viento: {{ weatherData?.wind?.speed }} km/h</p>
+      </div>
     </div>
   </div>
 </div>
+
+<footer class="text-center text-gray-500 text-sm mt-2 pb-5">
+  <p>Proyecto realizado por Leone Tomás &copy; {{ getCurrentYear() }}</p>
+</footer>
+
+
+
+
+
